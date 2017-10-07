@@ -560,7 +560,8 @@ func (p *Provider) getFrontendRule(container dockerData) string {
 		return label
 	}
 	if labels, err := getLabels(container, []string{labelDockerComposeProject, labelDockerComposeService}); err == nil {
-		return "Host:" + p.getSubDomain(labels[labelDockerComposeService]+"."+labels[labelDockerComposeProject]) + "." + p.Domain
+		return "Host:" + p.getSubDomain(labels[labelDockerComposeService] + "." + p.Domain
+		// return "Host:" + p.getSubDomain(labels[labelDockerComposeService]+"."+labels[labelDockerComposeProject]) + "." + p.Domain
 	}
 	if len(p.Domain) > 0 {
 		return "Host:" + p.getSubDomain(container.ServiceName) + "." + p.Domain
